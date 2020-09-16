@@ -12,3 +12,5 @@ Possible solution to implement retry attempts limit behavior:
 2. Each time message cannot be processed publish it again but set or increment/decrement header field, say x-redelivered-count (you can chose any name you like, though). To get control over redeliveries in this case you have to check the field you set whether it reaches some limit (top or bottom - 0 is my choise, a-la ttl in ip header from tcp/ip).
 
 3. Store message unique key (say uuid, but you have to set it manually when you publish message) in Redis, memcache or other storage, even in mysql alongside with redeliveries count and then on each redelivery increment/decrement this value until it reach the limit.
+
+4.We can have publish_time field in message itself and defined time period (say in T = 5 minutes it should be processed).Before retrying the message by consumer, we can check current time and message published time difference. IF its more than defined time period T then discard message from queue with +ve ack.
