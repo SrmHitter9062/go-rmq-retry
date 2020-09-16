@@ -17,4 +17,5 @@ Possible solution to implement retry attempts limit behavior:
   3.1) Set requeue count while publishig message and and decrement every requeue time until its reached 0 and then discard message
   3.2) OR set requeue count while requeuing first time ( "abcdsfdsfd-123" => 3) and decrement every requeue time until its reached 0 and then discard message
 ````
-4.We can have publish_time field in message itself and defined time period (say in T = 5 minutes it should be processed).Before retrying the message by consumer, we can check current time and message published time difference. IF its more than defined time period T then discard message from queue with +ve ack.
+4. We can have publish_time field in message itself and defined time period (say in T = 5 minutes it should be processed).Before retrying the message by consumer, we can check current time and message published time difference. IF its more than defined time period T then discard message from queue with +ve ack.
+5. DLX - https://engineering.nanit.com/rabbitmq-retries-the-full-story-ca4cc6c5b493
