@@ -21,4 +21,5 @@ Possible solution to implement retry attempts limit behavior:
 5. https://engineering.nanit.com/rabbitmq-retries-the-full-story-ca4cc6c5b493
 
    5.1 Reject + DLX
+
    5.2 republish in delayed exchange
